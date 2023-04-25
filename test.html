@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="myDiv">Hello World, this is a test.</div>
+    <script>
+      var u = new SpeechSynthesisUtterance();
+      var words = myDiv.innerHTML.split(" ");
+      var a = 0;
+      u.text = myDiv.innerHTML;
+      u.lang = "en-UK";
+      u.rate = 0.7;
+      u.onboundary = function (event) {
+        console.log(words);
+        myDiv.innerHTML = myDiv.innerHTML.replace(
+          words[a],
+          "<strong>" + words[a] + "</strong>"
+        );
+        a++;
+      };
+      speechSynthesis.speak(u);
+    </script>
+  </body>
+</html>
+
+<!-- TODO https://github.com/albirrkarim/react-speech-highlight-demo -->

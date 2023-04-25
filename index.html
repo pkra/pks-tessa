@@ -6,19 +6,23 @@
     <title>Experimentieren mit tesseract.js</title>
   </head>
   <body>
-    <h1>Experimentieren mit tesseract.js, Bild input, and Speakable</h1>
+    <h1>
+      Ein Experiment mit tesseract.js, Bild Input, und einfacher Navigation für Sprachsynthese
+    </h1>
 
-    <p>Bild auswählen oder fotografieren:</p>
-
-    <input type="file" accept="image/*" id="fileInput" />
+    <fieldset>
+      <p>
+        <label for="fileInput">Bild auswählen oder fotografieren:</label>
+      </p>
+      <input type="file" accept="image/*" id="fileInput" />
+    </fieldset>
 
     <p>Text Ausgabe:</p>
-    <img id="output" />
 
-    <p lang="de" id="tessOutput" class="spkbl"></p>
-
+    <button id="zurück">Zurück</button><button id="vor">Vor</button>
+    <p lang="de" id="tessOutput"></p>
+    <img id="output" src="" alt="" />
     <script src="tesseract.min.js"></script>
-    <script src="spkbl.min.js"></script>
     <script src="index.js"></script>
   </body>
 </html>

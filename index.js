@@ -26,17 +26,35 @@ function doSomethingWithFiles(fileList) {
     }).then(
       ({ data: { text } }) => {
         // console.log(text);
-        tessOutput.innerHTML = text;
-        Speakable.init({
-          multivoice: true,
-          l18n: {
-            play: "Text vorlesen",
-            pause: "Pause",
-            progress: "Fortschritt",
-            stop: "Schließen"
-          }
-        });
+        text.split('\n').forEach(substring => {
+          tessOutput.insertAdjacentHTML('beforeend', `<p>${substring}</p>`);
+        })
+
+        tessOutput.querySelectorAll('p').forEach(p => {
+          const substring = p.innerHTML;
+          p.innerHTML = '';
+          substring.split(' ').forEach(word => { if (word) p.insertAdjacentHTML('beforeend', `<span>${word}</span> `) })
+        })
+
       }
     );
   }
 }
+
+const play = (forward) => {
+  const increment = forward ? +1 : -1
+  const spans = [...tessOutput.querySelectorAll('span')];
+  const currentIndex = spans.findIndex(node => node.hasAttribute('style'));
+  const next = spans[currentIndex + increment] || spans[0];
+  // console.log(next)
+  next.style.backgroundColor = 'yellow';
+  spans[currentIndex]?.removeAttribute('style');
+  window.speechSynthesis.cancel();
+  let ssu = new SpeechSynthesisUtterance(next.textContent);
+  ssu.lang = "de";
+
+  window.speechSynthesis.speak(ssu);
+}
+vor.addEventListener('click', play.bind(null, true));
+zurück.addEventListener('click', play.bind(null, false));
+
