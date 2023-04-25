@@ -17,6 +17,7 @@ function doSomethingWithFiles(fileList) {
 
   if (file !== null) {
     output.src = URL.createObjectURL(file);
+    tessOutput.innerHTML = '';
     // tesseract (loaded via script)
     // https://github.com/naptha/tesseract.js/blob/master/examples/browser/image-processing.html
     Tesseract.recognize(file, "deu", {
@@ -25,6 +26,7 @@ function doSomethingWithFiles(fileList) {
       logger: (m) => console.log(m)
     }).then(
       ({ data: { text } }) => {
+        if (!text) return;
         // console.log(text);
         text.split('\n').forEach(substring => {
           tessOutput.insertAdjacentHTML('beforeend', `<p>${substring}</p>`);
