@@ -43,20 +43,39 @@ function doSomethingWithFiles(fileList) {
   }
 }
 
-const play = (forward) => {
+let ssu = new SpeechSynthesisUtterance();
+ssu.lang = "de";
+
+let controller;
+
+const manualMove = (forward) => {
   const increment = forward ? +1 : -1
   const spans = [...tessOutput.querySelectorAll('span')];
   const currentIndex = spans.findIndex(node => node.hasAttribute('style'));
+  if (forward && (currentIndex === spans.length - 1)) {
+    if (play.checked) play.click()
+    return;
+  }
   const next = spans[currentIndex + increment] || spans[0];
   // console.log(next)
   next.style.backgroundColor = 'yellow';
   spans[currentIndex]?.removeAttribute('style');
   window.speechSynthesis.cancel();
-  let ssu = new SpeechSynthesisUtterance(next.textContent);
-  ssu.lang = "de";
-
+  ssu.text = next.textContent;
   window.speechSynthesis.speak(ssu);
 }
-vor.addEventListener('click', play.bind(null, true));
-zurück.addEventListener('click', play.bind(null, false));
+vor.addEventListener('click', manualMove.bind(null, true));
+zurück.addEventListener('click', manualMove.bind(null, false));
 
+
+const automaticMove = () => {
+  if (play.checked) {
+    controller = new AbortController;
+    ssu.addEventListener('end', () => { manualMove(true) }, { signal: controller.signal });
+    manualMove(true);
+  }
+  else {
+    controller.abort();
+  }
+}
+play.addEventListener('click', automaticMove);
