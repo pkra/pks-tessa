@@ -16,6 +16,10 @@
         <label for="fileInput">Bild auswählen oder fotografieren:</label>
       </p>
       <input type="file" accept="image/*" id="fileInput" />
+      <details hidden>
+        <summary>Bild zeigen</summary>
+        <img id="output" src="" alt="user selected image" />
+      </details>
     </fieldset>
 
     <p>Text Ausgabe:</p>
@@ -37,7 +41,6 @@
       <label for="play"> ⟩⟩ Automatisch Vor ⟩⟩</label>
     </div>
     <p lang="de" id="tessOutput"></p>
-    <img id="output" src="" alt="" />
     <script src="tesseract.min.js"></script>
     <script src="index.js"></script>
   </body>

@@ -38,6 +38,8 @@ function doSomethingWithFiles(fileList) {
           substring.split(' ').forEach(word => { if (word) p.insertAdjacentHTML('beforeend', `<span>${word}</span> `) })
         })
 
+        // enable UI
+        document.querySelectorAll('[hidden]').forEach(node => node.removeAttribute('hidden'));
       }
     );
   }
