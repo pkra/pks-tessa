@@ -4,6 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PKS Tessa</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        width: min(100% - 2rem, 80ch);
+        margin-inline: auto;
+      }
+      summary {
+        width: max-content;
+      }
+      .flex {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        margin-top: 1rem;
+      }
+      .checkbox {
+        border: var(--border-width) solid var(--primary);
+        border-radius: var(--border-radius);
+        padding: 0.33rem;
+        width: max-content;
+      }
+      .checkbox:has([disabled]) {
+        border-color: var(--form-element-disabled-border-color);
+      }
+
+      .playback {
+        position: sticky;
+        top: 0;
+        background: var(--primary-inverse);
+        padding: 1rem;
+        max-width: 40ch;
+        margin: 1rem;
+        border: var(--border-width) solid var(--primary);
+        border-radius: var(--border-radius);
+      }
+    </style>
   </head>
   <body>
     <h1>
