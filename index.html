@@ -40,9 +40,6 @@
         border-radius: var(--border-radius);
       }
 
-      .instruction {
-        --font-size: 2rem;
-      }
       .instruction--active {
         background-color: var(--primary-focus);
       }
@@ -58,9 +55,9 @@
       Text aus Fotos Vorlesen
     </h1>
 
-    <p class="instruction instruction--active">
+    <h2 class="instruction instruction--active">
       ① &ensp; Wähle ein Foto mit Text aus.
-    </p>
+    </h2>
     <fieldset>
       <p>
         <label for="fileInput">Bild auswählen oder fotografieren:</label>
@@ -72,9 +69,8 @@
       </details>
     </fieldset>
 
-    <p class="instruction">② &ensp; Lass Dir den Text vorlesen!</p>
+    <h2 class="instruction">② &ensp; Lass Dir den Text vorlesen!</h2>
 
-    <h2>Text Ausgabe</h2>
     <div class="output">
       <fieldset class="playback" hidden>
         <p>Text Ausgabe steuern:</p>
