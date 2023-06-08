@@ -39,6 +39,7 @@ function doSomethingWithFiles(fileList) {
         })
 
         // enable UI
+        document.querySelectorAll('[disabled]').forEach(node => node.removeAttribute('disabled'))
         document.querySelectorAll('[hidden]').forEach(node => node.removeAttribute('hidden'));
       }
     );

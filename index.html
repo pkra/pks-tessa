@@ -58,25 +58,23 @@
       </details>
     </fieldset>
 
-    <p>Text Ausgabe:</p>
-
-    <div>
-      <button id="zurück">⟨⟨ Wort Zurück ⟨⟨</button>
-      <button id="vor">⟩⟩ Wort Vor ⟩⟩</button>
+    <h2>Text Ausgabe</h2>
+    <div class="output">
+      <fieldset class="playback" hidden>
+        <p>Text Ausgabe steuern:</p>
+        <div class="flex checkbox">
+          <input disabled type="checkbox" id="play" />
+          <label for="play"> ⟩⟩ Automatisch Vor ⟩⟩</label>
+        </div>
+        <div class="flex">
+          <button disabled id="zurück">⟨⟨ Wort Zurück ⟨⟨</button>
+          <button disabled id="vor">⟩⟩ Wort Vor ⟩⟩</button>
+        </div>
+      </fieldset>
+      <div lang="de" id="tessOutput">
+        <p>Wähle ein Bild aus, damit hier der Text erscheint.</p>
+      </div>
     </div>
-    <div
-      style="
-        background-color: lightblue;
-        border: 1px solid lightskyblue;
-        border-style: outset;
-        width: max-content;
-        margin-top: 1em;
-      "Y
-    >
-      <input type="checkbox" id="play" />
-      <label for="play"> ⟩⟩ Automatisch Vor ⟩⟩</label>
-    </div>
-    <p lang="de" id="tessOutput"></p>
     <script src="tesseract.min.js"></script>
     <script src="index.js"></script>
   </body>
