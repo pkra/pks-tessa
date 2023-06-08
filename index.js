@@ -36,6 +36,9 @@ function doSomethingWithFiles(fileList) {
           return;
         }
         // console.log(text);
+        // toggle instruction step highlight to Step 2
+        document.querySelectorAll('.instruction').forEach(node => node.classList.toggle('instruction--active'));
+
         // clear output
         tessOutput.innerHTML = '';
         // Add tesseract results

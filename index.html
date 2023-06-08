@@ -39,6 +39,13 @@
         border: var(--border-width) solid var(--primary);
         border-radius: var(--border-radius);
       }
+
+      .instruction {
+        --font-size: 2rem;
+      }
+      .instruction--active {
+        background-color: var(--primary-focus);
+      }
     </style>
   </head>
   <body>
@@ -47,6 +54,9 @@
       Text aus Fotos Vorlesen
     </h1>
 
+    <p class="instruction instruction--active">
+      ① &ensp; Wähle ein Foto mit Text aus.
+    </p>
     <fieldset>
       <p>
         <label for="fileInput">Bild auswählen oder fotografieren:</label>
@@ -57,6 +67,8 @@
         <img id="output" src="" alt="user selected image" />
       </details>
     </fieldset>
+
+    <p class="instruction">② &ensp; Lass Dir den Text vorlesen!</p>
 
     <h2>Text Ausgabe</h2>
     <div class="output">
@@ -72,7 +84,7 @@
         </div>
       </fieldset>
       <div lang="de" id="tessOutput">
-        <p>Wähle ein Bild aus, damit hier der Text erscheint.</p>
+        <p>Wähle in ① ein Bild aus, damit hier der Text und die Steuerung erscheint.</p>
       </div>
     </div>
     <script src="tesseract.min.js"></script>
