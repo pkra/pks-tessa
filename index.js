@@ -1,3 +1,6 @@
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./service-worker.js");
+}
 
 // image input -- via https://web.dev/media-capturing-images/
 
