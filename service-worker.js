@@ -1,5 +1,5 @@
 'use strict'
-const cacheVersion = "v1.0.1";
+const cacheVersion = "v1.0.2";
 const cachedResources = [
     '/',
     'index.html',
@@ -13,8 +13,7 @@ const cachedResources = [
 
 const addResourcesToCache = async (resources) => {
     const cache = await caches.open(cacheVersion);
-    try {await cache.addAll(resources);}
-    catch(e) {console.log(e)}
+    await cache.addAll(resources);
 };
 
 const putInCache = async (request, response) => {
