@@ -1,5 +1,7 @@
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./service-worker.js");
+  navigator.serviceWorker.register("./service-worker.js", {
+    scope: "./",
+  });
 }
 
 // image input -- via https://web.dev/media-capturing-images/
