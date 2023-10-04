@@ -101,3 +101,10 @@ const automaticMove = () => {
   }
 }
 play.addEventListener('click', automaticMove);
+
+// HACK run something to get everything loaded, cf. #11
+Tesseract.recognize(window.location+'hesse.png', "deu", {
+  corePath: './tesseract-core-simd.wasm.js',
+  workerPath: "./worker.min.js",
+  logger: (m) => console.log(m)
+})

@@ -5,6 +5,7 @@ const cachedResources = [
     './index.html',
     './index.js',
     './styles.css',
+    './hesse.png',
     './tesseract-core-simd.wasm.js',
     './tesseract.min.js',
     './worker.min.js',
