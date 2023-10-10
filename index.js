@@ -10,7 +10,7 @@ fileInput.addEventListener("change", (e) =>
   doSomethingWithFiles(e.target.files)
 );
 
-function doSomethingWithFiles(fileList) {
+async function doSomethingWithFiles(fileList) {
   let file = null;
 
   for (let i = 0; i < fileList.length; i++) {
@@ -35,13 +35,13 @@ function doSomethingWithFiles(fileList) {
     wrappers[0].insertAdjacentElement('afterend', spinner);
 
     // run tesseract (loaded via script)
-    // https://github.com/naptha/tesseract.js/blob/master/examples/browser/image-processing.html
-    Tesseract.recognize(file, "deu", {
-      corePath: './tesseract-core-simd.wasm.js',
-      workerPath: "./worker.min.js",
-      logger: (m) => console.log(m)
-    }).then(
-      ({ data: { text } }) => {
+    const worker = await Tesseract.createWorker("deu", 1, {
+      workerPath: './node_modules/tesseract.js/dist/worker.min.js',
+      langPath: '.',
+      corePath: './node_modules/tesseract.js-core',
+    });
+    const { data: { text } } = await worker.recognize(file);
+    await worker.terminate();
         spinner.remove()
         if (!text) {
           tessOutput.innerHTML = '😞 Es tut mir leid, da ist etwas schief gegangen. <br> Bitte versuche es noch einmal oder frage um Hilfe.'
@@ -70,8 +70,6 @@ function doSomethingWithFiles(fileList) {
         wrappers[1].removeAttribute('hidden');
         document.querySelector('details[hidden]').removeAttribute('hidden');
       }
-    );
-  }
 }
 
 let ssu = new SpeechSynthesisUtterance();
@@ -111,10 +109,3 @@ const automaticMove = () => {
   }
 }
 play.addEventListener('click', automaticMove);
-
-// HACK run something to get everything loaded, cf. #11
-Tesseract.recognize(window.location+'hesse.png', "deu", {
-  corePath: './tesseract-core-simd.wasm.js',
-  workerPath: "./worker.min.js",
-  logger: (m) => console.log(m)
-})
