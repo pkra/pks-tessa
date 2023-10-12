@@ -1,5 +1,5 @@
 'use strict'
-const cacheVersion = "v1.0.3";
+const cacheVersion = "v1.0.4";
 const cachedResources = [
     './',
     './index.html',

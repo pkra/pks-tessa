@@ -77,6 +77,19 @@ ssu.lang = "de";
 
 let controller;
 
+const presentWord = (wordElement) => {
+  // clear old word if any
+  tessOutput.querySelector('span[data-currentWord]')?.removeAttribute('data-currentWord');
+  
+  // set current word and speak t
+  wordElement.setAttribute('data-currentWord', '');
+  wordElement.focus();
+  window.speechSynthesis.cancel();
+  ssu.text = wordElement.textContent;
+  window.speechSynthesis.speak(ssu);
+
+}
+
 const manualMove = (forward) => {
   const increment = forward ? +1 : -1
   const spans = [...tessOutput.querySelectorAll('span')];
@@ -86,13 +99,7 @@ const manualMove = (forward) => {
     return;
   }
   const next = spans[currentIndex + increment] || spans[0];
-  // console.log(next)
-  next.setAttribute('data-currentWord', '');
-  next.focus();
-  spans[currentIndex]?.removeAttribute('data-currentWord');
-  window.speechSynthesis.cancel();
-  ssu.text = next.textContent;
-  window.speechSynthesis.speak(ssu);
+  presentWord(next)
 }
 vor.addEventListener('click', manualMove.bind(null, true));
 zurück.addEventListener('click', manualMove.bind(null, false));
@@ -109,3 +116,10 @@ const automaticMove = () => {
   }
 }
 play.addEventListener('click', automaticMove);
+
+// enable click/touch to read
+document.body.addEventListener('focusin', (event) => {
+  const ocrWord = event.target.closest('span[tabindex="0"]');
+  if (ocrWord) presentWord(ocrWord);
+})
+
