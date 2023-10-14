@@ -8,7 +8,8 @@
     "tesseract.js-core": "^5.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tesseract": "cp ./node_modules/tesseract.js-core/tesseract-core-lstm.wasm.js ./tesseract && cp ./node_modules/tesseract.js-core/tesseract-core-simd-lstm.wasm.js ./tesseract && cp ./node_modules/tesseract.js/dist/tesseract.min.js ./tesseract && cp ./node_modules/tesseract.js/dist/worker.min.js ./tesseract"
   },
   "author": "",
   "license": "ISC"

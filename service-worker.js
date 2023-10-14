@@ -1,15 +1,15 @@
 'use strict'
-const cacheVersion = "v1.0.4";
+const cacheVersion = "v1.0.5";
 const cachedResources = [
     './',
     './index.html',
     './index.js',
     './styles.css',
     './hesse.png',
-    './node_modules/tesseract.js-core/tesseract-core-lstm.wasm.js',
-    './node_modules/tesseract.js-core/tesseract-core-simd-lstm.wasm.js',
-    './node_modules/tesseract.js/dist/tesseract.min.js',
-    './node_modules/tesseract.js/dist/worker.min.js'
+    './tesseract/tesseract-core-lstm.wasm.js',
+    './tesseract/tesseract-core-simd-lstm.wasm.js',
+    './tesseract/tesseract.min.js',
+    './tesseract/worker.min.js'
     // 'deu.traineddata.gz', //crashes serviceworker registration on Chrome; but tesseract will cache the file if we run 1 test on the network
 ];
 

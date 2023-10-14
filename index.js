@@ -36,9 +36,9 @@ async function doSomethingWithFiles(fileList) {
 
     // run tesseract (loaded via script)
     const worker = await Tesseract.createWorker("deu", 1, {
-      workerPath: './node_modules/tesseract.js/dist/worker.min.js',
+      workerPath: './tesseract/worker.min.js',
       langPath: '.',
-      corePath: './node_modules/tesseract.js-core',
+      corePath: './tesseract',
     });
     const { data: { text } } = await worker.recognize(file);
     await worker.terminate();

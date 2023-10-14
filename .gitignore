@@ -1,13 +1,1 @@
-node_modules/*
-!node_modules/tesseract.js
-node_modules/tesseract.js/*
-!node_modules/tesseract.js/LICENSE.md
-!node_modules/tesseract.js/dist/
-node_modules/tesseract.js/dist/*
-!node_modules/tesseract.js/dist/tesseract.min.js
-!node_modules/tesseract.js/dist/worker.min.js
-!node_modules/tesseract.js-core/
-node_modules/tesseract.js-core/*
-!node_modules/tesseract.js-core/LICENSE
-!node_modules/tesseract.js-core/tesseract-core-lstm.wasm.js
-!node_modules/tesseract.js-core/tesseract-core-simd-lstm.wasm.js
+node_modules
