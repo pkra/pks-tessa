@@ -48,6 +48,36 @@
         border-radius: var(--border-radius);
       }
 
+      #play {
+        appearance: none;
+        padding: 0.5rem;
+        height: calc(3rem + 4px); /* 2rem from ::before + 2*0.5rem from padding + 2*px from border */
+        vertical-align: middle;
+        position: relative;
+        overflow: hidden;
+        font: inherit;
+        font-size: 1px;
+      }
+
+      #play::before {
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        width: 0;
+        height: 2rem;
+        border-style: solid;
+        border-width: 1rem 0 1rem 1.8rem;
+        border-color: transparent transparent transparent var(--primary);
+        cursor: pointer;
+        transition: 100ms all ease;
+      }
+
+      #play:checked::before {
+        border-style: double;
+        border-width: 0px 0 0px 1.8rem;
+        border-color: var(--primary-inverse);
+      }
+
       .instruction--active {
         background-color: var(--mark-background-color);
         font-size: 1.1rem;
@@ -126,7 +156,9 @@
       <p tabindex="-1" id="step2" class="instruction">② &ensp; Lass Dir den Text vorlesen!</p>
       <div class="flex playback">
         <button disabled id="zurück">⟨⟨&nbsp;Zurück&nbsp;⟨⟨</button>
-        <input disabled class="checkbox" type="checkbox" id="play" />
+        <label aria-label="Automatisch vor">
+          <input disabled class="checkbox" type="checkbox" id="play" />
+        </label>
         <button disabled id="vor">⟩⟩&nbsp;Vor&nbsp;⟩⟩</button>
       </div>
       <div lang="de" id="tessOutput">
