@@ -83,7 +83,6 @@ const presentWord = (wordElement) => {
   
   // set current word and speak t
   wordElement.setAttribute('data-currentWord', '');
-  wordElement.focus();
   window.speechSynthesis.cancel();
   ssu.text = wordElement.textContent;
   window.speechSynthesis.speak(ssu);
@@ -99,7 +98,7 @@ const manualMove = (forward) => {
     return;
   }
   const next = spans[currentIndex + increment] || spans[0];
-  presentWord(next)
+  next.focus();
 }
 vor.addEventListener('click', manualMove.bind(null, true));
 zurück.addEventListener('click', manualMove.bind(null, false));
